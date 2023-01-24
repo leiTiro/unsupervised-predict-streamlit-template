@@ -31,6 +31,7 @@ import streamlit as st
 # Data handling dependencies
 import pandas as pd
 import numpy as np
+from PIL import Image
 
 # Custom Libraries
 from utils.data_loader import load_movie_titles
@@ -45,12 +46,20 @@ def main():
 
     # DO NOT REMOVE the 'Recommender System' option below, however,
     # you are welcome to add more options to enrich your app.
-    page_options = ["Recommender System","Solution Overview"]
+    page_options = ["Home","Recommender System","Solution Overview","About us",
+                    "Contact Us"]
 
     # -------------------------------------------------------------------
     # ----------- !! THIS CODE MUST NOT BE ALTERED !! -------------------
     # -------------------------------------------------------------------
     page_selection = st.sidebar.selectbox("Choose Option", page_options)
+    if page_selection == "Home":
+        st.title("Intuition tech")
+        st.write("We help companies give their customers what they need based on what the like")
+        image = Image.open('C:/Users/Tiro/Downloads/cinema style.jpg')
+        st.image(image, caption='Sunrise by the mountains')
+        
+        
     if page_selection == "Recommender System":
         # Header contents
         st.write('# Movie Recommender Engine')
@@ -103,7 +112,22 @@ def main():
     if page_selection == "Solution Overview":
         st.title("Solution Overview")
         st.write("Describe your winning approach on this page")
+        image = Image.open('C:/Users/Tiro/Downloads/Recommeder-Engine-Banner-1280x576.jpg')
+        st.image(image, caption='Sunrise by the mountains')
 
+    if page_selection == "About us":
+        st.title("We are Intuition tech")
+        st.write("Meet The Team")
+        
+    if page_selection == "Contact Us":
+        st.title("Call")
+        st.write("+27716123800")
+        st.write("+27781234566")
+        
+        st.title("Email")
+        st.write("Inttech@gmail.com")
+        st.write("DataTech@gmail.com")
+        
     # You may want to add more sections here for aspects such as an EDA,
     # or to provide your business pitch.
 
