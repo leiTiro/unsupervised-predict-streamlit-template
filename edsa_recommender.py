@@ -46,19 +46,14 @@ def main():
 
     # DO NOT REMOVE the 'Recommender System' option below, however,
     # you are welcome to add more options to enrich your app.
-    page_options = ["Home","Recommender System","Solution Overview","About us",
+    page_options = ["Recommender System","Home","Solution Overview","About us",
                     "Contact Us"]
 
     # -------------------------------------------------------------------
     # ----------- !! THIS CODE MUST NOT BE ALTERED !! -------------------
     # -------------------------------------------------------------------
     page_selection = st.sidebar.selectbox("Choose Option", page_options)
-    if page_selection == "Home":
-        st.title("Intuition tech")
-        st.write("We help companies give their customers what they need based on what the like")
-        image = Image.open('C:/Users/Tiro/Downloads/cinema style.jpg')
-        st.image(image, caption='Sunrise by the mountains')
-        
+    
         
     if page_selection == "Recommender System":
         # Header contents
@@ -109,10 +104,16 @@ def main():
     # -------------------------------------------------------------------
 
     # ------------- SAFE FOR ALTERING/EXTENSION -------------------
+    if page_selection == "Home":
+        st.title("Intuition tech")
+        st.write("We help companies give their customers what they need based on what the like")
+        image = Image.open('https://github.com/leiTiro/unsupervised-predict-streamlit-template/blob/master/resources/imgs/cinema%20style.jpg')
+        st.image(image, caption='Sunrise by the mountains')
+        
     if page_selection == "Solution Overview":
         st.title("Solution Overview")
         st.write("Describe your winning approach on this page")
-        image = Image.open('C:/Users/Tiro/Downloads/Recommeder-Engine-Banner-1280x576.jpg')
+        image = Image.open('https://github.com/leiTiro/unsupervised-predict-streamlit-template/blob/master/resources/imgs/Recommeder-Engine-Banner-1280x576.jpg')
         st.image(image, caption='Sunrise by the mountains')
 
     if page_selection == "About us":
