@@ -105,15 +105,15 @@ def main():
 
     # ------------- SAFE FOR ALTERING/EXTENSION -------------------
     if page_selection == "Home":
-        st.title("Intuition tech")
-        st.write("We help companies give their customers what they need based on what the like")
+        st.title("Intuition-Tech")
+        st.write("We help companies give their customers what they want based on what the like")
         image = Image.open('resources/imgs/cinema style.jpg')
-        st.image(image, caption='Sunrise by the mountains')
+        st.image(image, caption='')
         
     if page_selection == "Solution Overview":
         st.title("Solution Overview")
         image = Image.open('resources/imgs/Recommeder-Engine-Banner-1280x576.jpg')
-        st.image(image, caption='Sunrise by the mountains')
+        st.image(image, caption='')
         st.write("Collaborative Filtering")
         st.write("collaborative filtering uses similarities between users and items simultaneously to provide recommendations.")
         
@@ -123,9 +123,13 @@ def main():
         st.write("Overall solution exploration")
         
     if page_selection == "About us":
-        st.title("We are Intuition tech")
+        st.title("We are Intuition-Tech")
         st.write("Meet The Team")
-        
+        images = ['resources/imgs/zwane.PNG','resources/imgs/KRB.PNG' ,'resources/imgs/Lesego.PNG' ]
+        st.image(images, caption=["some generic text"] * len(images))
+        images = ['resources/imgs/Ruth.PNG']
+        st.image(images, use_column_width=10,  caption=["some generic text"] )
+                 
     if page_selection == "Contact Us":
         st.title("Call")
         st.write("+27716123800")
