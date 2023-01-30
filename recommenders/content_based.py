@@ -39,7 +39,7 @@ movies = pd.read_csv('resources/data/movies.csv', sep = ',')
 ratings = pd.read_csv('resources/data/ratings.csv')
 movies.dropna(inplace=True)
 
-def data_preprocessing(subset_size):
+def data_preprocessing(movie_list):
     """Prepare data for use within Content filtering algorithm.
 
     Parameters
@@ -53,11 +53,17 @@ def data_preprocessing(subset_size):
         Subset of movies selected for content-based filtering.
 
     """
+    
+    #creating a movie_list 
+    movie1= movies[movies['title'] ==movie_list[0]]['genre'].iloc[0]
+    movie2= movies[movies['title'] ==movie_list[1]]['genre'].iloc[0]
+    movie3= movies[movies['title'] ==movie_list[2]]['genre'].iloc[0]
+    movie_bucket = movies[(movies['genre']==movie1) and (movies['genre']== movie2) and (movies['genre']==movie3)]
     # Split genre data into individual words.
     movies['keyWords'] = movies['genres'].str.replace('|', ' ')
     # Subset of the data
-    movies_subset = movies[:subset_size]
-    return movies_subset
+    #movies_subset = movies[:subset_size]
+    return movie_bucket
 
 # !! DO NOT CHANGE THIS FUNCTION SIGNATURE !!
 # You are, however, encouraged to change its content.  
@@ -80,7 +86,7 @@ def content_model(movie_list,top_n=10):
     """
     # Initializing the empty list of recommended movies
     recommended_movies = []
-    data = data_preprocessing(27000)
+    data = data_preprocessing(movie_list)
     # Instantiating and generating the count matrix
     count_vec = CountVectorizer()
     count_matrix = count_vec.fit_transform(data['keyWords'])
