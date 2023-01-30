@@ -58,7 +58,7 @@ def data_preprocessing(movie_list):
     movie1= movies[movies['title'] ==movie_list[0]]['genre'].iloc[0]
     movie2= movies[movies['title'] ==movie_list[1]]['genre'].iloc[0]
     movie3= movies[movies['title'] ==movie_list[2]]['genre'].iloc[0]
-    movie_bucket = movies[(movies['genre']==movie1) and (movies['genre']== movie2) and (movies['genre']==movie3)]
+    movie_bucket = movies[(movies['genre']==movie1) | (movies['genre']== movie2) | (movies['genre']==movie3)]
     # Split genre data into individual words.
     movie_bucket['keyWords'] = movie_bucket['genres'].str.replace('|', ' ')
     # Subset of the data
