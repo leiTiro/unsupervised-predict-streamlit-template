@@ -107,15 +107,21 @@ def main():
     if page_selection == "Home":
         st.title("Intuition tech")
         st.write("We help companies give their customers what they need based on what the like")
-        image = Image.open('https://github.com/leiTiro/unsupervised-predict-streamlit-template/blob/master/resources/imgs/cinema%20style.jpg')
+        image = Image.open('resources/imgs/cinema style.jpg')
         st.image(image, caption='Sunrise by the mountains')
         
     if page_selection == "Solution Overview":
         st.title("Solution Overview")
-        st.write("Describe your winning approach on this page")
-        image = Image.open('https://github.com/leiTiro/unsupervised-predict-streamlit-template/blob/master/resources/imgs/Recommeder-Engine-Banner-1280x576.jpg')
+        image = Image.open('resources/imgs/Recommeder-Engine-Banner-1280x576.jpg')
         st.image(image, caption='Sunrise by the mountains')
-
+        st.write("Collaborative Filtering")
+        st.write("collaborative filtering uses similarities between users and items simultaneously to provide recommendations.")
+        
+        st.write("Content-Based Filtering")
+        st.write("Content-Based Filtering Explanation")
+        
+        st.write("Overall solution exploration")
+        
     if page_selection == "About us":
         st.title("We are Intuition tech")
         st.write("Meet The Team")
