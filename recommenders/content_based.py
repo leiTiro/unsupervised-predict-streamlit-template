@@ -60,7 +60,7 @@ def data_preprocessing(movie_list):
     movie3= movies[movies['title'] ==movie_list[2]]['genre'].iloc[0]
     movie_bucket = movies[(movies['genre']==movie1) and (movies['genre']== movie2) and (movies['genre']==movie3)]
     # Split genre data into individual words.
-    movies['keyWords'] = movies['genres'].str.replace('|', ' ')
+    movie_bucket['keyWords'] = movie_bucket['genres'].str.replace('|', ' ')
     # Subset of the data
     #movies_subset = movies[:subset_size]
     return movie_bucket
