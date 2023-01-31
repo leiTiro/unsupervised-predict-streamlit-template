@@ -148,7 +148,7 @@ def collab_model(movie_list,top_n=10):
     top_50_indexes = list(listings.iloc[1:50].index)"""
     # Removing chosen movies
     #top_indexes = np.setdiff1d(top_50_indexes,[idx_1,idx_2,idx_3])
-    new_movieId_list= [ X for X in movieId_list if movie in movies_df['movieId'].tolist()]
+    new_movieId_list= [ X for X in movieId_list if X in movies_df['movieId'].tolist()]
     random.shuffle(new_movieId_list)
     recommended_movies= []
     for i in new_movieId_list[:top_n]:
