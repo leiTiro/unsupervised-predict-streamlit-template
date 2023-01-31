@@ -125,8 +125,8 @@ def collab_model(movie_list,top_n=10):
     for i in movie_ids :
         df_init_users=df_init_users.append(ratings_df[ratings_df['userId']==i])
     
-    movie_details= df_init_users.sort_values(by='rating',ascending=false)
-    movieId_list= list(set(movie_details['movieId'][movie_details['rating'] > threshold].tolist()))
+    movie_details = df_init_users.sort_values( by='rating',ascending= False)
+    movieId_list = list(set(movie_details['movieId'][movie_details['rating'] > threshold].tolist()))
     
     """# Getting the cosine similarity matrix
     cosine_sim = cosine_similarity(np.array(df_init_users), np.array(df_init_users))
