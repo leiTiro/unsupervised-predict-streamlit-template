@@ -126,7 +126,8 @@ def main():
         image = Image.open('resources/imgs/Recommeder-Engine-Banner-1280x576.jpg')
         st.image(image, caption='')
         st.write("**Collaborative Filtering**")
-        st.write("collaborative filtering uses similarities between users and items simultaneously to provide recommendations. It is also known as social filtering. Collaborative filtering uses algorithms to filter data from user reviews to make personalized recommendations for users with similar preferences.")
+	with st.expander('Read more')
+        	st.write("collaborative filtering uses similarities between users and items simultaneously to provide recommendations. It is also known as social filtering. Collaborative filtering uses algorithms to filter data from user reviews to make personalized recommendations for users with similar preferences.")
         
         st.write("**Content-Based Filtering**")
         st.write("Content-based filtering uses item features to recommend other items similar to what the user likes, based on their previous actions or explicit feedback. it uses features of an item you have already seen to recommend others based on similarity.")
