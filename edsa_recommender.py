@@ -46,7 +46,7 @@ def main():
 
     # DO NOT REMOVE the 'Recommender System' option below, however,
     # you are welcome to add more options to enrich your app.
-    page_options = ["Recommender System","Home","Solution Overview","About us",
+    page_options = ["Recommender System","Home","Solution Architecture","About us",
                     "Contact Us"]
 
     # -------------------------------------------------------------------
@@ -106,38 +106,71 @@ def main():
     # ------------- SAFE FOR ALTERING/EXTENSION -------------------
     if page_selection == "Home":
         st.title("Intuition-Tech")
+        st.write("We are a leading global knowledge solutions company. We help clients develop the systems and expertise they need to unlock their potential")
         st.write("We help companies give their customers what they want based on what the like")
         image = Image.open('resources/imgs/cinema style.jpg')
         st.image(image, caption='')
         
-    if page_selection == "Solution Overview":
-        st.title("Solution Overview")
+        st.write("Are you looking to watch a Movie? A series or even Youtube Videos? ")
+        st.write("if so, then you have come to the right place!")
+        st.write("We can recommend something for you to watch based on something that you have already seen and very much liked.")
+        st.write("We use comparison algorithms to make movie recomendations that have similar items to other movies of choice and liking.")
+        image = Image.open('resources/imgs/Think.PNG')
+        st.image(image, caption='')
+        st.title("We think so that you don't have too :) ")
+        st.write("Check out our recommenders now!")
+        
+        
+    if page_selection == "Solution Architecture":
+        st.title("Explore our architectural principles")
         image = Image.open('resources/imgs/Recommeder-Engine-Banner-1280x576.jpg')
         st.image(image, caption='')
-        st.write("Collaborative Filtering")
-        st.write("collaborative filtering uses similarities between users and items simultaneously to provide recommendations.")
+        st.write("**Collaborative Filtering**")
+        st.write("collaborative filtering uses similarities between users and items simultaneously to provide recommendations. It is also known as social filtering. Collaborative filtering uses algorithms to filter data from user reviews to make personalized recommendations for users with similar preferences.")
         
-        st.write("Content-Based Filtering")
-        st.write("Content-Based Filtering Explanation")
+        st.write("**Content-Based Filtering**")
+        st.write("Content-based filtering uses item features to recommend other items similar to what the user likes, based on their previous actions or explicit feedback. it uses features of an item you have already seen to recommend others based on similarity.")
+       
+        image= Image.open('resources/imgs/fetch.PNG')
+        st.image(image, caption='')
+        st.write("**Overall solution exploration**")
+        st.write("Recommender systems are information retrieval tool that allocates accurate recommendations to the specific users.In the current era of big data, the recommender system aspires to provide users with a tailored set of personalized items from a pool of a large population.Personalization systems have proved to be one of the most powerful tools for e-commerce sites, assisting users in discovering the most relevant products across enormous product catalogues.A highly performing recommendation System will suggest items that match the similarities with the highest degree of performance")
         
-        st.write("Overall solution exploration")
+        image= Image.open('resources/imgs/film.PNG')
+        st.image(image, caption='')
         
     if page_selection == "About us":
         st.title("We are Intuition-Tech")
+        st.write("Intuition-Tech is a leading global knowledge solutions company. We help companies develop the systems and expertise they need to unlock their potential")
+
         st.write("Meet The Team")
-        images = ['resources/imgs/zwane.PNG','resources/imgs/KRB.PNG' ,'resources/imgs/Lesego.PNG' ]
-        st.image(images, caption=["some generic text"] * len(images))
+        images = ['resources/imgs/zwane.PNG']
+        st.image(images, use_column_width=10,  caption=["Chief Executive Officer: Honey Zwane"] )
+        
+        images=['resources/imgs/KRB.PNG']
+        st.image(images, use_column_width=10,  caption=["Ai Engineer: Karabo Eugene Hlahla"] )
+        
+        images= ['resources/imgs/Lesego.PNG' ]
+        st.image(images, caption=["Lesego Tiro: Product Manager"] * len(images))
         images = ['resources/imgs/Ruth.PNG']
-        st.image(images, use_column_width=10,  caption=["some generic text"] )
+        st.image(images, use_column_width=10,  caption=["Business Analyst"] )
                  
     if page_selection == "Contact Us":
         st.title("Call")
-        st.write("+27716123800")
-        st.write("+27781234566")
+        images=['resources/imgs/phone.PNG']
+        st.image(images, use_column_width=10,  caption=[""] )
+        st.write("**+27716123800**")
+        st.write("**+27781234566**")
+        
         
         st.title("Email")
+        images=['resources/imgs/email.PNG']
+        st.image(images, use_column_width=10,  caption=[""] )
         st.write("Inttech@gmail.com")
         st.write("DataTech@gmail.com")
+        
+        images=['resources/imgs/social.PNG']
+        st.image(images, use_column_width=10,  caption=["Copyright © 2023, Intuition-Tech"] )
         
     # You may want to add more sections here for aspects such as an EDA,
     # or to provide your business pitch.
