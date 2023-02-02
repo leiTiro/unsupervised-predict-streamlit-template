@@ -197,7 +197,7 @@ def main():
             
         col1.markdown('Distribution of Ratings')
         if col1.button('Pie Chart'):
-            image= Image.open('resources/imgs/dist_of ratings.PNG')
+            image= Image.open('resources/imgs/dist_of ratings.png')
             st.image(image, caption='')
             
             
@@ -209,19 +209,19 @@ def main():
          st.markdown('Top 20 Genres with the highest Average Ratings')
          
          if  st.button('Bar Graph'):
-             image= Image.open('resources/imgs/Vgenres.PNG')
+             image= Image.open('resources/imgs/Vgenres.png')
              st.image(image, caption='')
              
          st.markdown('Top 10 rated Movies')
         
          if  st.button('List'):
-            image= Image.open('resources/imgs/top_rated.PNG')
+            image= Image.open('resources/imgs/top_rated.png')
             st.image(image, caption='')
             
          st.markdown('Actors with the most number of movies')
         
          if  st.button('open'):
-            image= Image.open('resources/imgs/actor vs movies.PNG')
+            image= Image.open('resources/imgs/actor vs movies.png')
             st.image(image, caption='')
         
         
