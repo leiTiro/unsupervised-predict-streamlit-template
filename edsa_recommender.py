@@ -45,7 +45,7 @@ from recommenders.content_based import content_model
 title_list = load_movie_titles('resources/data/movies.csv')
 
 st.sidebar.write('Film-Drive')
-image = Image.open('resources/imgs/logo M.PNG')
+image = Image.open('resources/imgs/logo M.png')
 st.sidebar.image(image, caption='')
 
 
