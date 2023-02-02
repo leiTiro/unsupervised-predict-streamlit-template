@@ -32,6 +32,9 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from PIL import Image
+import time
+import plotly.figure_factory as ff
+import matplotlib.pyplot as plt
 
 # Custom Libraries
 from utils.data_loader import load_movie_titles
@@ -41,12 +44,17 @@ from recommenders.content_based import content_model
 # Data Loading
 title_list = load_movie_titles('resources/data/movies.csv')
 
+st.sidebar.write('Film-Drive')
+image = Image.open('resources/imgs/logo M.PNG')
+st.sidebar.image(image, caption='')
+
+
 # App declaration
 def main():
 
     # DO NOT REMOVE the 'Recommender System' option below, however,
     # you are welcome to add more options to enrich your app.
-    page_options = ["Recommender System","Home","Solution Architecture","About us",
+    page_options = ["Recommender System","Home","Solution Architecture","Datasets","Visual Aids","About us",
                     "Contact Us"]
 
     # -------------------------------------------------------------------
@@ -104,71 +112,163 @@ def main():
     # -------------------------------------------------------------------
 
     # ------------- SAFE FOR ALTERING/EXTENSION -------------------
+   
     if page_selection == "Home":
         st.title("Intuition-Tech")
-        st.write("We are a leading global knowledge solutions company. We help clients develop the systems and expertise they need to unlock their potential")
-        st.write("We help companies give their customers what they want based on what the like")
-        image = Image.open('resources/imgs/cinema style.jpg')
-        st.image(image, caption='')
+        col1, col2= st.columns([2,1])
         
-        st.write("Are you looking to watch a Movie? A series or even Youtube Videos? ")
-        st.write("if so, then you have come to the right place!")
-        st.write("We can recommend something for you to watch based on something that you have already seen and very much liked.")
-        st.write("We use comparison algorithms to make movie recomendations that have similar items to other movies of choice and liking.")
+        with col2.expander('The Company'):
+            st.write("Intuition-Tech is a leading African knowledge solutions company. We help clients develop the systems and expertise they need to unlock their potential")
+            image = Image.open('resources/imgs/cinema style.jpg')
+            st.image(image, caption='')
+            st.write("We help companies give their customers what they want based on what the like")
+            
+      
+        
+        col1.write("Are you looking to watch a Movie? A series or even Youtube Videos? ")
+        col1.write("if so, then you have come to the right place!")
+        col1.write("We can recommend something for you to watch based on something that you have already seen and very much liked.")
+        col1.write("We use comparison algorithms to make movie recomendations that have similar items to other movies of your choice and liking.")
         image = Image.open('resources/imgs/Think.PNG')
-        st.image(image, caption='')
-        st.title("We think so that you don't have too :) ")
-        st.write("Check out our recommenders now!")
+        col1.image(image, caption='')
+        col1.title("We think so that you don't have too :) ")
+        col1.write("Check out our recommenders now!")
+        
+        st.markdown("## Recommend a movie to other user")
+        title = st.text_input('Movie title', ' ')
+        st.write('I recommend the movie', title)
+    
+        
         
         
     if page_selection == "Solution Architecture":
-        st.title("Explore our architectural principles")
+        st.markdown("Explore our architectural principles")
         image = Image.open('resources/imgs/Recommeder-Engine-Banner-1280x576.jpg')
         st.image(image, caption='')
         st.write("**Collaborative Filtering**")
-	with st.expander('Read more')
+        with st.expander('Read more'):
         	st.write("collaborative filtering uses similarities between users and items simultaneously to provide recommendations. It is also known as social filtering. Collaborative filtering uses algorithms to filter data from user reviews to make personalized recommendations for users with similar preferences.")
         
+        
+        
+        
         st.write("**Content-Based Filtering**")
-        st.write("Content-based filtering uses item features to recommend other items similar to what the user likes, based on their previous actions or explicit feedback. it uses features of an item you have already seen to recommend others based on similarity.")
+        with st.expander('Read more'):
+            st.write("Content-based filtering uses item features to recommend other items similar to what the user likes, based on their previous actions or explicit feedback. it uses features of an item you have already seen to recommend others based on similarity.")
        
         image= Image.open('resources/imgs/fetch.PNG')
         st.image(image, caption='')
         st.write("**Overall solution exploration**")
-        st.write("Recommender systems are information retrieval tool that allocates accurate recommendations to the specific users.In the current era of big data, the recommender system aspires to provide users with a tailored set of personalized items from a pool of a large population.Personalization systems have proved to be one of the most powerful tools for e-commerce sites, assisting users in discovering the most relevant products across enormous product catalogues.A highly performing recommendation System will suggest items that match the similarities with the highest degree of performance")
+        st.write("Recommender systems are information retrieval tool that allocates accurate recommendations to the specific users.In the current era of big data, the recommender system aspires to provide users with a tailored set of personalized items from a pool of a large population.Personalization systems have proved to be one of the most powerful tools for e-commerce sites, assisting users in discovering the most relevant products across enormous product catalogues.A highly performing recommendation System will suggest items that match the similarities with the highest degree of performance.")
         
         image= Image.open('resources/imgs/film.PNG')
         st.image(image, caption='')
         
+        name1 = st.text_input('Enter your Username', ' ')
+        txt = st.text_input('Leave a Comment', ' ')
+        st.write(' ',name1 + ' :'+ txt )
+        
+    
+        
+        
+    if page_selection == "Datasets":
+        st.markdown("Database for recommender systems")
+        col1, col2 = st.columns([2,1])
+        col1.markdown('Movies DataFrame')
+        if col1.button('open movies'):
+            dfmovies= pd.read_csv('resources/data/movies.csv')
+            col1.write(dfmovies)
+        
+        col1.markdown('Ratings DataFrame')
+        if col1.button('open ratings'):
+            dfrating= pd.read_csv('resources/data/ratings.csv')
+            col1.write(dfrating)
+            
+        col2.markdown('Add to our Database')
+        uploaded_file = col2.file_uploader("Choose a file")
+        if uploaded_file is not None:
+            dataframe = pd.read_csv(uploaded_file)
+            bar=col2.progress(0)
+            for perc in range(100):
+                time.sleep(0.05)
+                bar.progress(perc+1)
+            col2.success('File uploaded successfully')
+            col2.write(dataframe)
+            
+        col1.markdown('Distribution of Ratings')
+        if col1.button('Pie Chart'):
+            image= Image.open('resources/imgs/dist_of ratings.PNG')
+            st.image(image, caption='')
+            
+            
+            
+    if page_selection == "Visual Aids":
+         st.title("Descriptive statistics")
+         st.write("The visuals outline an imaginary roadmap to which movies,actors or genres to focus on for a good reliable recommendation.")
+         
+         st.markdown('Top 20 Genres with the highest Average Ratings')
+         
+         if  st.button('Bar Graph'):
+             image= Image.open('resources/imgs/Vgenres.PNG')
+             st.image(image, caption='')
+             
+         st.markdown('Top 10 rated Movies')
+        
+         if  st.button('List'):
+            image= Image.open('resources/imgs/top_rated.PNG')
+            st.image(image, caption='')
+            
+         st.markdown('Actors with the most number of movies')
+        
+         if  st.button('open'):
+            image= Image.open('resources/imgs/actor vs movies.PNG')
+            st.image(image, caption='')
+        
+        
     if page_selection == "About us":
+        
         st.title("We are Intuition-Tech")
-        st.write("Intuition-Tech is a leading global knowledge solutions company. We help companies develop the systems and expertise they need to unlock their potential")
+        st.write("Intuition-Tech is a leading global knowledge solutions company. We help companies develop the systems and expertise they need to unlock their potential.")
 
         st.write("Meet The Team")
+        
+        col1, col2= st.columns([3,1])
         images = ['resources/imgs/zwane.PNG']
-        st.image(images, use_column_width=10,  caption=["Chief Executive Officer: Honey Zwane"] )
+        col1.image(images, use_column_width=10,  caption=["Chief Executive Officer: Honey Zwane"] )
         
         images=['resources/imgs/KRB.PNG']
-        st.image(images, use_column_width=10,  caption=["Ai Engineer: Karabo Eugene Hlahla"] )
+        col2.image(images, use_column_width=10,  caption=["Ai Engineer: Karabo Eugene Hlahla"] )
         
         images= ['resources/imgs/Lesego.PNG' ]
-        st.image(images, caption=["Lesego Tiro: Product Manager"] * len(images))
+        col2.image(images,use_column_width=10, caption=["Lesego Tiro: Product Manager"])
+        
         images = ['resources/imgs/Ruth.PNG']
-        st.image(images, use_column_width=10,  caption=["Business Analyst"] )
+        col1.image(images, use_column_width=10,  caption=["Business Analyst"] )
                  
     if page_selection == "Contact Us":
-        st.title("Call")
+        col1, col2 = st.columns([1,1])
+        col1.title("Call")
         images=['resources/imgs/phone.PNG']
-        st.image(images, use_column_width=10,  caption=[""] )
-        st.write("**+27716123800**")
-        st.write("**+27781234566**")
+        col1.image(images, use_column_width=10,  caption=[""] )
+        col1.write("**+27716123800**")
+        col1.write("**+27781234566**")
         
         
-        st.title("Email")
+        col1.title("Email")
         images=['resources/imgs/email.PNG']
-        st.image(images, use_column_width=10,  caption=[""] )
-        st.write("Inttech@gmail.com")
-        st.write("DataTech@gmail.com")
+        col1.image(images, use_column_width=10,  caption=[""] )
+        col1.write("Inttech@gmail.com")
+        col1.write("DataTech@gmail.com")
+        
+        col2.title("Instagram")
+        images=['resources/imgs/gram.PNG']
+        col2.image(images, use_column_width=10,  caption=[""] )
+        col2.write("Intuition-Tech")
+        
+        col2.title("Twitter")
+        images=['resources/imgs/twit.PNG']
+        col2.image(images, use_column_width=10,  caption=[""] )
+        col2.write("@Intuition-Tech")
         
         images=['resources/imgs/social.PNG']
         st.image(images, use_column_width=10,  caption=["Copyright © 2023, Intuition-Tech"] )
