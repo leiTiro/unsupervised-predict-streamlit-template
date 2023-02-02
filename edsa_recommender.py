@@ -261,12 +261,12 @@ def main():
         col1.write("DataTech@gmail.com")
         
         col2.title("Instagram")
-        images=['resources/imgs/gram.PNG']
+        images=['resources/imgs/gram.png']
         col2.image(images, use_column_width=10,  caption=[""] )
         col2.write("Intuition-Tech")
         
         col2.title("Twitter")
-        images=['resources/imgs/twit.PNG']
+        images=['resources/imgs/twit.png']
         col2.image(images, use_column_width=10,  caption=[""] )
         col2.write("@Intuition-Tech")
         
